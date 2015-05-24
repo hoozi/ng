@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Angularjs</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="../bower_components/angular/angular.min.js?version=1.3.15"></script>
+</head>
+<body ng-app="huapp">
+<table ng-controller="test6ctrl">
+	<tr>
+		<th>id</th>
+		<th>name</th>
+		<th>age</th>
+	</tr>
+	<tr ng-repeat="user in users | orderBy:'name'">
+		<td>{{user.id}}</td>
+		<td>{{user.name}}</td>
+		<td>{{user.age}}</td>
+	</tr>
+</table>
+	
+<script>
+ 	angular.module("huapp",[])
+		.controller("test6ctrl", function($scope,$http){
+			//$scope.users = getData("hoozi", 27, 10);
+			$http.get("data.json").success(function(result) {
+				$scope.users = result;
+			})
+			//$scope.users = 
+		});
+</script>
+</body>
+</html>
