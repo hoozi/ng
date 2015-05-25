@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Angularjs</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="../bower_components/angular/angular.min.js?version=1.3.15"></script>
+</head>
+<body ng-app="hoozi-app">
+	<div ng-controller="c">
+		{{user.name}}
+		{{user2.name}}
+		{{name3}}
+	</div>
+<script>
+	angular.module("hoozi-app",[])
+		   .factory('ctrl',function(){
+		   		return {
+		   			"name":"hoozi",
+		   			"age":27
+		   		}
+		   })
+		   .controller('c', function($scope, ctrl, user, name, name3){
+		   		$scope.user = ctrl;
+		   		$scope.user2 = user;
+		   		$scope.name3 = name3
+		   })
+		   .service('user', function(){
+		   	    this.name = "hoozi2";
+		   	    this.ages= "28";
+		   })
+		   .value('name', "hoozi3")
+		   .constant('name3', "hooz4")
+</script>
+</body>
+</html>

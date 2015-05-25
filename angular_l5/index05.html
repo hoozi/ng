@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Angularjs</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="../bower_components/angular/angular.min.js?version=1.3.15"></script>
+</head>
+<body ng-app="hoozi-app">
+	<div id="out"></div>
+	<div ng-controller="test1ctrl">
+	<p>
+		{{name}} 
+	</p>
+	<p>
+	</p> 
+	<p>result: {{result}}</p>
+	</div>
+<script>
+	angular.module("hoozi-app",[])
+				.controller("test1ctrl", function($scope,$compile,$timeout){
+					/*$scope.$watchGroup("name", function(newVal, oldVal) {
+						$scope.result = "newVal:"+newVal+";oldVal:"+oldVal
+					})*/
+					/*$scope.$watchGroup(["name","age"], function(newVal, oldVal) {
+						$scope.result = newVal
+					})*/
+					$scope.names = ['igor', 'matias', 'misko', 'james'];
+					$timeout(function(){
+						$scope.names.push("xxxx")
+					},2000)
+					$scope.$watchCollection("names", function(newVal, oldVal) {
+						$scope.result = newVal
+					})
+				})
+</script>
+</body>
+</html>
