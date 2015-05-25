@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Angularjs</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="../bower_components/angular/angular.min.js?version=1.3.15"></script>
+</head>
+<body ng-app="hoozi-app">
+	<div ng-controller="test1ctrl">
+	<ul>
+		<li><input type="text" ng-model="txt"></li>
+		<li><input type="checkbox" name="checkbox" id="" ng-model="txt"></li>
+		<li><input type="checkbox" name="checkbox" id="" ng-model="txt"></li>
+	</ul>
+		<button ng-click="myclick()">click</button>{{txt}}
+	</div>
+<script>
+	angular.module("hoozi-app",[])
+				.controller("test1ctrl", function($scope,$compile){
+					$scope.txt = true
+					$scope.myclick = function(){
+						alert($scope.txt)
+					}
+				})
+</script>
+</body>
+</html>

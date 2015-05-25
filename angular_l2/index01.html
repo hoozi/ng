@@ -11,13 +11,24 @@
 </head>
 <body ng-app="hoozi-app">
 	<div ng-controller="test1ctrl">
-		<h3>{{name}}</h3>
-		<h3>{{name}}</h3>
-		<input type="text" ng-model="name">
+		<p><input type="text" name="" id="" ng-model="title"></p>
+		<p><textarea name="" id="" cols="30" rows="10" ng-model="content"></textarea></p>
+		<p><button ng-click="add_post()">add</button></p>
+		<ul>
+			<li ng-repeat="post in posts">
+				<h2>{{post.title}}</h2>
+				<p>{{post.content}}</p>
+			</li>
+		</ul>
 	</div>
 <script>
 	angular.module("hoozi-app",[]).controller("test1ctrl", function($scope) {
-		
+		$scope.posts = [];
+		$scope.add_post = function(){
+			$scope.posts.push({title:$scope.title,content:$scope.content});
+			$scope.title="";
+			$scope.content=""
+		}
 	})
 </script>
 </body>
